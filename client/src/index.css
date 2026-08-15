@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius: var(--radius);
+}
+:root {
+  --background: #f5faf7;
+  --foreground: #173d2d;
+  --card: #ffffff;
+  --card-foreground: #173d2d;
+  --popover: #ffffff;
+  --popover-foreground: #173d2d;
+  --primary: #14804a;
+  --primary-foreground: #ffffff;
+  --secondary: #eaf6ef;
+  --secondary-foreground: #14804a;
+  --muted: #eef5f1;
+  --muted-foreground: #71847a;
+  --accent: #eaf6ef;
+  --accent-foreground: #14804a;
+  --destructive: #c84b44;
+  --border: #dbece2;
+  --input: #dbece2;
+  --ring: #65d892;
+  --radius: 0.75rem;
+}
+
+* { border-color: var(--border); }
+html, body, #root { min-height: 100%; }
+body { margin: 0; background: var(--background); color: var(--foreground); font-family: 'DM Sans', sans-serif; }
+h1, h2, h3, h4, .font-display { font-family: 'Space Grotesk', sans-serif; }
+button, input, select, textarea { font-family: inherit; }
+
+.aviation-hero { background: radial-gradient(circle at 76% 30%, rgba(85, 210, 139, .18), transparent 24%), linear-gradient(135deg, #082d20 0%, #0c5438 52%, #13764a 100%); }
+.logo-mark { display: grid; place-items: center; width: 43px; height: 43px; border: 1px solid rgba(203, 255, 222, .35); border-radius: 13px; color: #a7f3c6; background: rgba(255,255,255,.1); transform: rotate(-8deg); }
+.logo-mark svg { transform: rotate(8deg); }
+.status-dot { width: 6px; height: 6px; border-radius: 99px; background: #7df0a9; box-shadow: 0 0 0 4px rgba(125,240,169,.12); }
+.hero-route { position: relative; height: 130px; margin-bottom: 10px; opacity: .72; }
+.route-line { position: absolute; top: 67px; left: 35px; right: 35px; border-top: 1px dashed rgba(197, 255, 218, .55); transform: rotate(-15deg); }
+.route-plane { position: absolute; top: 35px; left: 49%; display: grid; place-items: center; width: 38px; height: 38px; color: #b7f3cc; border: 1px solid rgba(255,255,255,.35); border-radius: 50%; background: rgba(255,255,255,.1); transform: rotate(18deg); }
+.route-label { position: absolute; font-size: 9px; font-weight: 700; letter-spacing: .2em; color: rgba(223, 255, 233, .65); }
+.route-a { top: 18px; left: 16px; }.route-b { bottom: 10px; right: 13px; }
+.stat-card { position: relative; background: rgba(255,255,255,.9); transition: transform .18s cubic-bezier(.23,1,.32,1), box-shadow .18s ease; }.stat-card:hover { transform: translateY(-3px); box-shadow: 0 20px 45px rgba(14,68,48,.12); }
+@media (prefers-reduced-motion: reduce) { .stat-card { transition: none; } }
+
+/* Flight Deck responsive performance layer */
+html {
+  min-height: 100%;
+  background: var(--background);
+  color-scheme: light;
+  text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100dvh;
+  isolation: isolate;
+}
+
+button, a, input, select, textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button, a {
+  touch-action: manipulation;
+}
+
+img, svg, video, canvas {
+  max-width: 100%;
+}
+
+.fd-surface {
+  background: color-mix(in srgb, var(--card) 92%, transparent);
+  border: 1px solid color-mix(in srgb, var(--border) 78%, transparent);
+  box-shadow: 0 12px 36px rgba(14, 68, 48, .06);
+}
+
+.fd-page {
+  width: 100%;
+  min-width: 0;
+  max-width: 1680px;
+  margin-inline: auto;
+}
+
+@media (max-width: 767px) {
+  .fd-page {
+    padding-inline: .25rem;
+  }
+  .aviation-hero {
+    border-radius: 1rem;
+    padding-inline: 1rem;
+  }
+  .hero-route {
+    height: 78px;
+  }
+  .route-line {
+    left: 12px;
+    right: 12px;
+    top: 42px;
+  }
+  .route-plane {
+    top: 18px;
+    width: 32px;
+    height: 32px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .fd-interactive {
+    transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  }
+  .fd-interactive:hover {
+    transform: translateY(-2px);
+  }
+}
