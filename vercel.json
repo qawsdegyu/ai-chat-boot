@@ -4,8 +4,9 @@
   "buildCommand": "pnpm build",
   "installCommand": "pnpm install --no-frozen-lockfile",
   "outputDirectory": "dist/public",
-  "rewrites": [
-    { "source": "/api/:path*", "destination": "/api/index" },
-    { "source": "/(.*)", "destination": "/index.html" }
+  "routes": [
+    { "src": "/api/(.*)", "dest": "/api/index.ts" },
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
