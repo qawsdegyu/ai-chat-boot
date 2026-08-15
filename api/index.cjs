@@ -2907,7 +2907,7 @@ var index_exports = {};
 __export(index_exports, {
   default: () => index_default
 });
-module.exports = __toCommonJS(index_exports);
+module.exports = index_default;
 var import_express = __toESM(require("express"), 1);
 var import_express2 = require("@trpc/server/adapters/express");
 
@@ -4397,3 +4397,5 @@ app.get("/api/health", (_req, res) => {
   res.json({ ok: true, service: "imcan-api" });
 });
 var index_default = app;
+
+module.exports = index_default;
