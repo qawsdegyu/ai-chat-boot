@@ -86,7 +86,7 @@ export default function DashboardLayout({
 
   return (
     <SidebarProvider
-      className="min-h-dvh w-full bg-background"
+      className="flight-deck-layout min-h-dvh w-full bg-background"
       style={
         {
           "--sidebar-width": `${sidebarWidth}px`,

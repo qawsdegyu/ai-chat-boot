@@ -137,7 +137,7 @@ export default function Home() {
   const exportCurrentExcel = () => { const buffer = inventoryToExcelBuffer(exportRows(rows) as Array<Record<string, string>>); downloadFile(buffer, "imcan-filtered-inventory.xlsx", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"); toast.success(reportSuccessMessage("excel")); };
 
   return <DashboardLayout>
-    <div className="min-h-screen bg-[#f5faf7] text-[#173d2d]">
+    <div className="flight-deck-app min-h-screen bg-[#f5faf7] text-[#173d2d]">
       {location === "/" && <header className="aviation-hero relative overflow-hidden px-6 pb-7 pt-6 lg:px-10">
         <div className="absolute inset-0 opacity-25 [background-image:linear-gradient(120deg,transparent_0%,rgba(255,255,255,.16)_47%,transparent_48%),linear-gradient(180deg,transparent_70%,rgba(3,47,31,.35))]" />
         <div className="relative mx-auto max-w-[1500px]">
