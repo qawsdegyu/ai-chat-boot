@@ -7,7 +7,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Label } from "../components/ui/label";
 import { AlertCircle, LockKeyhole } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "../components/ui/alert";
-import { supabase } from "../lib/supabase";
+import { isSupabaseConfigured, supabase } from "../lib/supabase";
 
 export default function Login() {
   const [, setLocation] = useLocation();
@@ -34,13 +34,19 @@ export default function Login() {
     }
     setError("");
     
-    // Sign in on frontend to get Supabase session for Storage uploads
+    // Sign in on frontend to get Supabase session for Storage uploads.
+    // Keep the app usable when Vercel variables have not been configured yet.
+    if (!isSupabaseConfigured || !supabase) {
+      setError("Supabase غير مهيأ على Vercel. أضف VITE_SUPABASE_URL و VITE_SUPABASE_ANON_KEY ثم أعد النشر.");
+      return;
+    }
+
     const { error: authError } = await supabase.auth.signInWithPassword({ email, password });
     if (authError) {
       setError(authError.message);
       return;
     }
-    
+
     loginMutation.mutate({ email, password });
   };
 
